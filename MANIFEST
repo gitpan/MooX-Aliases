@@ -1,0 +1,20 @@
+Changes
+lib/MooX/Aliases.pm
+maint/Makefile.PL.include
+Makefile.PL
+MANIFEST			This list of files
+t/00-load.t
+t/01-basic.t
+t/02-attributes.t
+t/03-roles.t
+t/04-traits.t
+t/06-init_arg.t
+t/07-init_arg-coerce.t
+t/10-errors.t
+t/12-roles-init_arg.t
+t/50-synopsis.t
+xt/init-args-moose.t
+xt/moose-inherit.t
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)
+README                                   README file (added by Distar)

@@ -3,8 +3,8 @@
    "author" : [
       "haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>"
    ],
-   "dynamic_config" : 0,
-   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.130880",
+   "dynamic_config" : 1,
+   "generated_by" : "ExtUtils::MakeMaker version 6.96, CPAN::Meta::Converter version 2.140640",
    "license" : [
       "perl_5"
    ],
@@ -16,36 +16,48 @@
    "no_index" : {
       "directory" : [
          "t",
-         "inc"
+         "xt"
       ]
    },
    "prereqs" : {
-      "build" : {
+      "build" : {},
+      "configure" : {},
+      "develop" : {
          "requires" : {
-            "Test::Fatal" : "0",
-            "Test::More" : "0.94"
-         }
-      },
-      "configure" : {
-         "requires" : {
-            "ExtUtils::MakeMaker" : "0"
+            "Moose" : "0",
+            "namespace::clean" : "0"
          }
       },
       "runtime" : {
          "requires" : {
             "Class::Method::Modifiers" : "1.05",
             "Moo" : "1.001",
-            "perl" : "5.008001",
             "strictures" : "1"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "Test::Fatal" : "0.003",
+            "Test::More" : "0.94"
          }
       }
    },
    "release_status" : "stable",
    "resources" : {
-      "homepage" : "http://github.com/haarg/MooX-Aliases",
+      "bugtracker" : {
+         "mailto" : "bug-MooX-Aliases@rt.cpan.org",
+         "web" : "https://rt.cpan.org/Public/Dist/Display.html?Name=MooX-Aliases"
+      },
+      "license" : [
+         "http://dev.perl.org/licenses/"
+      ],
       "repository" : {
-         "url" : "git://github.com/haarg/MooX-Aliases.git"
-      }
+         "type" : "git",
+         "url" : "git://github.com/haarg/MooX-Aliases.git",
+         "web" : "http://github.com/haarg/MooX-Aliases"
+      },
+      "x_IRC" : "irc://irc.perl.org/#moose"
    },
-   "version" : "0.001000"
+   "version" : "0.001001",
+   "x_authority" : "cpan:HAARG"
 }

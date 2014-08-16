@@ -4,7 +4,7 @@
       "haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.96, CPAN::Meta::Converter version 2.140640",
+   "generated_by" : "ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.141520",
    "license" : [
       "perl_5"
    ],
@@ -25,6 +25,7 @@
       "develop" : {
          "requires" : {
             "Moose" : "0",
+            "Test::Output" : "0",
             "namespace::clean" : "0"
          }
       },
@@ -32,6 +33,7 @@
          "requires" : {
             "Class::Method::Modifiers" : "1.05",
             "Moo" : "1.001",
+            "perl" : "5.006",
             "strictures" : "1"
          }
       },
@@ -58,6 +60,6 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moose"
    },
-   "version" : "0.001001",
+   "version" : "0.001002",
    "x_authority" : "cpan:HAARG"
 }

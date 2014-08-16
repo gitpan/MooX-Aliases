@@ -1,7 +1,7 @@
 package MooX::Aliases;
 use strictures 1;
 
-our $VERSION = '0.001001';
+our $VERSION = '0.001002';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -22,7 +22,7 @@ sub import {
 
     no strict 'refs';
     *{"${target}::${from}"} = sub {
-      goto $_[0]->can($to);
+      goto &{$_[0]->can($to)};
     };
   };
 

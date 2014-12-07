@@ -1,7 +1,7 @@
 package MooX::Aliases;
 use strictures 1;
 
-our $VERSION = '0.001002';
+our $VERSION = '0.001003';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -36,6 +36,7 @@ sub import {
   install_modifier $target, 'around', 'has', sub {
     my $orig = shift;
     my ($attr, %opts) = @_;
+    $attr =~ s/^\+//;
 
     my $aliases = delete $opts{alias};
     return $orig->($attr, %opts)
@@ -173,6 +174,8 @@ haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>
 =item * Karen Etheridge <ether@cpan.org>
 
 =item * Yuval Kogman <nothingmuch@woobling.org>
+
+=item * Daniel Gempesaw <gempesaw@gmail.com>
 
 =back
 

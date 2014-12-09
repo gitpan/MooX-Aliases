@@ -59,6 +59,6 @@
       },
       "x_IRC" : "irc://irc.perl.org/#moose"
    },
-   "version" : "0.001003",
+   "version" : "0.001004",
    "x_authority" : "cpan:HAARG"
 }

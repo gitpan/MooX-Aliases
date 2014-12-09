@@ -26,5 +26,5 @@ resources:
   bugtracker: https://rt.cpan.org/Public/Dist/Display.html?Name=MooX-Aliases
   license: http://dev.perl.org/licenses/
   repository: git://github.com/haarg/MooX-Aliases.git
-version: '0.001003'
+version: '0.001004'
 x_authority: cpan:HAARG

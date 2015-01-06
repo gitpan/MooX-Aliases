@@ -1,7 +1,7 @@
 package MooX::Aliases;
 use strictures 1;
 
-our $VERSION = '0.001004';
+our $VERSION = '0.001005';
 $VERSION = eval $VERSION;
 
 use Carp;
@@ -36,16 +36,22 @@ sub import {
   install_modifier $target, 'around', 'has', sub {
     my $orig = shift;
     my ($attr, %opts) = @_;
-    $attr =~ s/^\+//;
 
     my $aliases = delete $opts{alias};
-    return $orig->($attr, %opts)
-      unless $aliases;
-
     $aliases = [ $aliases ]
-      if !ref $aliases;
+      if $aliases && !ref $aliases;
 
-    my $name = defined $opts{init_arg} ? $opts{init_arg} : $attr;
+    return $orig->($attr, %opts)
+      unless $aliases && @$aliases;
+
+    my $attr_name
+      = !ref $attr     ? $attr
+      : @{$attr} == 1  ? $attr->[0]
+      : croak "Cannot make alias to list of attributes";
+
+    $attr_name =~ s/^\+//;
+
+    my $name = defined $opts{init_arg} ? $opts{init_arg} : $attr_name;
     my @names = @$aliases;
     if (!exists $opts{init_arg} || defined $opts{init_arg}) {
       unshift @names, $name;
@@ -55,7 +61,7 @@ sub import {
     my $out = $orig->($attr, %opts);
 
     for my $alias (@$aliases) {
-      $make_alias->($alias => $attr);
+      $make_alias->($alias => $attr_name);
     }
 
     if (!$installed_buildargs) {
@@ -176,6 +182,8 @@ haarg - Graham Knop (cpan:HAARG) <haarg@haarg.org>
 =item * Yuval Kogman <nothingmuch@woobling.org>
 
 =item * Daniel Gempesaw <gempesaw@gmail.com>
+
+=item * Denis Ibaev <dionys@gmail.com>
 
 =back
 

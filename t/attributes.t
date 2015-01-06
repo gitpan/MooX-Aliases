@@ -1,5 +1,6 @@
 use strictures 1;
 use Test::More;
+use Test::Fatal;
 
 my ($foo_called, $baz_called, $override_called);
 
@@ -24,13 +25,43 @@ my ($foo_called, $baz_called, $override_called);
         is      => 'rw',
     );
 
+    ::like( ::exception {
+        has [qw(attr1 attr2)] => (
+            is    => 'rw',
+            alias => 'attr3',
+        );
+    }, qr/^Cannot make alias to list of attributes/,
+        "aliasing a list of attributes fails");
+
+    ::is( ::exception {
+        has [qw(attr4 attr5)] => (
+            is    => 'rw',
+        );
+    }, undef,
+        "creating a list of attributes without aliases works");
+
+    ::is( ::exception {
+        has [qw(attr6)] => (
+            is    => 'rw',
+            alias => 'attr7',
+        );
+    }, undef,
+        "aliasing a list of one attribute works");
+
+    ::is( ::exception {
+        has [qw(attr8 attr9)] => (
+            is    => 'rw',
+            alias => [],
+        );
+    }, undef,
+        "multiple attributes with an empty list of aliases works");
+
     package MyTest::Sub;
     use Moo;
     use MooX::Aliases;
 
     extends qw(MyTest);
     has '+foo' => (
-        is      => 'rw',
         alias   => 'override',
         trigger => sub { $override_called++ },
     );
